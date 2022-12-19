@@ -1,3 +1,3 @@
-FROM node:12.18.1
+FROM node:19-alpine3.16
 ENV NODE_ENV=production
 WORKDIR /app
