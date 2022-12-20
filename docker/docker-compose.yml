@@ -1,9 +1,11 @@
 services:
   node:
-    image: 'node:19-alpine3.16'
+    build:
+      context: ./hardhat-app
     container_name: node-hardhat-server
-    volumes:
-      - ../src:/src
+    ports:
+      - 8545:8545
+    command: tail -f /dev/null
     networks:
       - wave-network
 
