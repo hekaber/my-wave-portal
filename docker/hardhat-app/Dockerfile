@@ -5,10 +5,12 @@ ENV NODE_ENV=production
 WORKDIR /usr/src
 COPY package.json .
 COPY hardhat.config.js .
+COPY entrypoint.sh .
+RUN chmod +x entrypoint.sh
 RUN <<EOF
 mkdir /logs
 touch /logs/out.txt
 npm install
 npm install chai @nomiclabs/hardhat-ethers ethers @nomicfoundation/hardhat-toolbox @nomicfoundation/hardhat-chai-matchers
-npx hardhat node >> /logs/out.txt &
 EOF
+ENTRYPOINT ["/usr/src/entrypoint.sh"]
