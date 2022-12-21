@@ -1,0 +1,13 @@
+services:
+  node:
+    build:
+      context: ./hardhat-app
+    container_name: node-hardhat-server
+    ports:
+      - 8545:8545
+    command: tail -f /dev/null
+    networks:
+      - wave-network
+
+networks:
+  wave-network: {}

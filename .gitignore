@@ -1,11 +1,11 @@
-node_modules
-.env
-coverage
-coverage.json
-typechain
-typechain-types
+src/node_modules
+config/.env
+src/coverage
+src/coverage.json
+src/typechain
+src/typechain-types
 
 # Hardhat files
-cache
-artifacts
+src/cache
+src/artifacts
 
