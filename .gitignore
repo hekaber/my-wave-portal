@@ -8,4 +8,4 @@ src/typechain-types
 # Hardhat files
 src/cache
 src/artifacts
-
+*.code-workspace
