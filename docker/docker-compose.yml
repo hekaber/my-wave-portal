@@ -1,5 +1,5 @@
 services:
-  node:
+  hardhat:
     build:
       context: ./hardhat-app
     container_name: hardhat-node
@@ -8,6 +8,14 @@ services:
     command: tail -f /dev/null
     networks:
       - wave-network
+  react:
+    image: node:18-alpine3.16
+    container_name: "react"
+    working_dir: /react
+    volumes:
+      - ../react:/react
+    command: tail -f /dev/null
+
 
 networks:
   wave-network: {}

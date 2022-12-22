@@ -19,26 +19,27 @@ EOF
 killImage() {
     docker images --format="{{.Repository}} {{.ID}}" | 
     grep "^$1 " | 
-    cut -d' ' -f2 |
+    cut -d' ' -f2 | 
     xargs docker rmi
 }
 
 while [ "$1" != "" ]; do
   case $1 in
   -s | --start)
-    cd docker &&
+    cd $(pwd)/docker &&
     docker-compose up --remove-orphans -d
-    exit
     ;;
   -n | --stop)
-    cd docker &&
+    cd $(pwd)/docker &&
     docker-compose down
-    exit
     ;;
   -k | --kill)
     shift
     killImage $1
-    exit
+    ;;
+  -cip | --container-ip)
+    shift
+    docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $1
     ;;
   -h | --help)
     usage
@@ -47,3 +48,6 @@ while [ "$1" != "" ]; do
   esac
   shift
 done
+
+#osascript -e "tell application \"Terminal\" to do script \"cd $(pwd)/docker ; docker-compose exec node /bin/bash -c 'yarn dev; bash' \""
+
