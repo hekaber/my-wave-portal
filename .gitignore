@@ -9,3 +9,4 @@ src/typechain-types
 src/cache
 src/artifacts
 *.code-workspace
+config/env/.env
