@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 
 cat <<EOF
-#############
-Hardhat node 
-#############
+###############
+Local Utilities
+###############
 EOF
 
 usage() {
