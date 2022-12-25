@@ -21,6 +21,8 @@ contract WavePortal {
 
     //Store the waves
     Wave[] waves;
+    
+    mapping(address => uint256) public lastWavedAt;
 
     constructor() payable {
         // Init seed
@@ -28,6 +30,20 @@ contract WavePortal {
     }
 
     function wave(string memory _message) public {
+
+         /*
+         * We need to make sure the current timestamp is at least 15-minutes bigger than the last timestamp we stored
+         */
+        require(
+            lastWavedAt[msg.sender] + 15 minutes < block.timestamp,
+            "Wait 15m"
+        );
+
+        /*
+         * Update the current timestamp we have for the user
+         */
+        lastWavedAt[msg.sender] = block.timestamp;
+
         totalWaves += 1;
         console.log("%s waved w/ message %s", msg.sender, _message);
 
@@ -40,6 +56,8 @@ contract WavePortal {
 
         // waver has 50% chance to win the price
         if (seed <= 50) {
+
+            console.log("%s won!!!", msg.sender);
             uint256 prizeAmount = 0.0001 ether;
             // check if I have enough in my wallet to afford the prize
             require(
