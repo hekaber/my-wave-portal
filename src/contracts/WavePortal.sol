@@ -7,6 +7,9 @@ import "hardhat/console.sol";
 contract WavePortal {
     uint256 totalWaves;
 
+    // The variable that will be used to generate a random num
+    uint256 private seed;
+
     // Solidity event
     event NewWave(address indexed from, uint256 timestamp, string message);
 
@@ -19,7 +22,10 @@ contract WavePortal {
     //Store the waves
     Wave[] waves;
 
-    constructor() payable {}
+    constructor() payable {
+        // Init seed
+        seed = (block.timestamp + block.difficulty) % 100;
+    }
 
     function wave(string memory _message) public {
         totalWaves += 1;
@@ -28,16 +34,23 @@ contract WavePortal {
         //Store new wave
         waves.push(Wave(msg.sender, _message, block.timestamp));
 
-        emit NewWave(msg.sender, block.timestamp, _message);
+        // init new seed for the waver who waves
+        seed = (block.difficulty + block.timestamp + seed) % 100;
+        console.log("Random # generated: %d", seed);
 
-        uint256 prizeAmount = 0.0001 ether;
-        // check if I have enough in my wallet to afford the prize
-        require(
-            prizeAmount <= address(this).balance,
-            "Trying to withdraw more money than the contract has."
-        );
-        (bool success, ) = (msg.sender).call{value: prizeAmount}("");
-        require(success, "Failed to withdraw money from contract.");
+        // waver has 50% chance to win the price
+        if (seed <= 50) {
+            uint256 prizeAmount = 0.0001 ether;
+            // check if I have enough in my wallet to afford the prize
+            require(
+                prizeAmount <= address(this).balance,
+                "Trying to withdraw more money than the contract has."
+            );
+            (bool success, ) = (msg.sender).call{value: prizeAmount}("");
+            require(success, "Failed to withdraw money from contract.");
+        }
+
+        emit NewWave(msg.sender, block.timestamp, _message);
     }
 
     /*
