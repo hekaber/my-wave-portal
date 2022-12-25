@@ -21,7 +21,7 @@ contract WavePortal {
 
     //Store the waves
     Wave[] waves;
-    
+
     mapping(address => uint256) public lastWavedAt;
 
     constructor() payable {
@@ -34,9 +34,13 @@ contract WavePortal {
          /*
          * We need to make sure the current timestamp is at least 15-minutes bigger than the last timestamp we stored
          */
-        require(
+        /* require(
             lastWavedAt[msg.sender] + 15 minutes < block.timestamp,
             "Wait 15m"
+        ); */
+        require(
+            lastWavedAt[msg.sender] + 30 seconds < block.timestamp, 
+            "Must wait 30 seconds before waving again."
         );
 
         /*
