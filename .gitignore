@@ -1,12 +1,12 @@
-src/node_modules
+src/solidity/node_modules
 config/.env
-src/coverage
-src/coverage.json
-src/typechain
-src/typechain-types
+src/solidity/coverage
+src/solidity/coverage.json
+src/solidity/typechain
+src/solidity/typechain-types
 
 # Hardhat files
-src/cache
-src/artifacts
+src/solidity/cache
+src/solidity/artifacts
 *.code-workspace
 src/config/env/.env
