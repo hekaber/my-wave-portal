@@ -62,7 +62,7 @@ contract WavePortal {
         if (seed <= 50) {
 
             console.log("%s won!!!", msg.sender);
-            uint256 prizeAmount = 0.0001 ether;
+            uint256 prizeAmount = 0.0006 ether;
             // check if I have enough in my wallet to afford the prize
             require(
                 prizeAmount <= address(this).balance,
