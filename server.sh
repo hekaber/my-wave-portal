@@ -41,6 +41,10 @@ while [ "$1" != "" ]; do
     shift
     docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $1
     ;;
+  -w | --webapp)
+    shift
+    cd $(pwd)/docker ; docker-compose exec node /bin/bash -c 'yarn dev; bash'
+    ;;
   -h | --help)
     usage
     exit
@@ -49,5 +53,5 @@ while [ "$1" != "" ]; do
   shift
 done
 
-#osascript -e "tell application \"Terminal\" to do script \"cd $(pwd)/docker ; docker-compose exec node /bin/bash -c 'yarn dev; bash' \""
+osascript -e "tell application \"Terminal\" to do script \"cd $(pwd)/docker ; docker-compose exec node /bin/bash -c 'yarn dev; bash' \""
 
