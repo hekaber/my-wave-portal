@@ -1,4 +1,5 @@
 src/solidity/node_modules
+src/web-app/src/node_modules
 config/.env
 src/solidity/coverage
 src/solidity/coverage.json
