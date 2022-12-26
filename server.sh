@@ -26,10 +26,12 @@ killImage() {
 while [ "$1" != "" ]; do
   case $1 in
   -s | --start)
+    rsync -r $(pwd)/src/web-app/ $(pwd)/docker/web-app/app
     cd $(pwd)/docker &&
     docker-compose up --remove-orphans -d
     ;;
   -n | --stop)
+    rm -rf $(pwd)/docker/web-app/app/
     cd $(pwd)/docker &&
     docker-compose down
     ;;
@@ -53,5 +55,5 @@ while [ "$1" != "" ]; do
   shift
 done
 
-osascript -e "tell application \"Terminal\" to do script \"cd $(pwd)/docker ; docker-compose exec node /bin/bash -c 'yarn dev; bash' \""
+#osascript -e "tell application \"Terminal\" to do script \"cd $(pwd)/docker ; docker-compose exec node /bin/bash -c 'yarn dev; bash' \""
 

@@ -1,0 +1,22 @@
+{
+  "name": "local_node_installation",
+  "version": "1.0.0",
+  "description": "waveportal webapp",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "react-scripts": "3.4.0",
+    "@types/react": "^17.0.13",
+    "react-loader-spinner": "^5.3.4",
+    "@types/react-dom": "^17.0.8",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "vite": "^3.0.4",
+    "ethers": "^5.4.4"
+   }
+}

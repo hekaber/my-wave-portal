@@ -9,13 +9,18 @@ services:
     networks:
       - wave-network
   node:
+    tty: true
+    stdin_open: true
     build:
       context: ./web-app
     container_name: "node"
     ports:
       - 8080:8080
     volumes:
-      - ../web-app:/app
+      - ../src/web-app:/usr/src/app
+    command: yarn start
+    networks:
+      - wave-network
 
 networks:
   wave-network: {}
