@@ -1,13 +1,16 @@
-src/solidity/node_modules
-src/web-app/src/node_modules
+#common
 config/.env
+
+#webapp
+src/web-app/src/node_modules
+
+# Hardhat files
 src/solidity/coverage
 src/solidity/coverage.json
 src/solidity/typechain
 src/solidity/typechain-types
-
-# Hardhat files
 src/solidity/cache
 src/solidity/artifacts
 *.code-workspace
 src/config/env/.env
+src/solidity/node_modules
