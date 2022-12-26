@@ -2,7 +2,7 @@
 config/.env
 
 #webapp
-src/web-app/src/node_modules
+src/web-app/node_modules
 
 # Hardhat files
 src/solidity/coverage
