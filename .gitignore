@@ -1,6 +1,8 @@
 .DS_Store
 #common
-config/.env
+src/*/config/env/.env
+src/*/config/env/.env
+
 
 #webapp
 src/web-app/node_modules
@@ -15,3 +17,6 @@ src/solidity/artifacts
 *.code-workspace
 src/config/env/.env
 src/solidity/node_modules
+
+#docker
+docker/web-app/app/*
