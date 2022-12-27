@@ -39,6 +39,10 @@ Reminder:
 npx hardhat run scripts/deploy.js --network <my_eth_network>
 ```
 
+And of course more details with:
+```shell
+./server.sh -n
+```
 ## More
 
 You still can try running some of the following tasks in your local environment:
