@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Blocks } from 'react-loader-spinner';
-
 import { ethers } from "ethers";
 import "./App.css";
-import abi from "./utils/WavePortal.json";
-import WaveInput from "./src/components/WaveInput";
-
+import WaveInput from "/src/components/WaveInput";
+import abi from "/src/utils/WavePortal.json";
 
 const getEthereumObject = () => window.ethereum;
 
@@ -19,30 +17,30 @@ const App = () => {
   const [currentAccount, setCurrentAccount] = useState("");
   const [allWaves, setAllWaves] = useState([]);
   const [loading, setLoading] = useState(false);
-  
+
   /**
    * Create a variable here that holds the contract address after you deploy!
    */
-  const contractAddress = "0xA7026AF26275555789428DFb7de0FC5036C3945f";
-  
-    /**
+  const contractAddress = import.meta.env.VITE_CONTRACT_ADDRESS;
+
+  /**
    * Create a variable here that references the abi content!
    */
   const contractABI = abi.abi;
   const checkIfWalletIsConnected = async () => {
     try {
       const ethereum = getEthereumObject();
-  
+
       /*
        * First make sure we have access to the Ethereum object.
        */
       if (!ethereum) {
         console.error("Make sure you have Metamask!");
       }
-  
+
       console.log("We have the Ethereum object", ethereum);
       const accounts = await ethereum.request({ method: "eth_accounts" });
-  
+
       if (accounts.length !== 0) {
         const account = accounts[0];
         console.log("Found an authorized account:", account);
@@ -54,7 +52,7 @@ const App = () => {
       console.error(error);
     }
   };
-  
+
   const wave = async (message) => {
     try {
       const { ethereum } = window;
@@ -134,7 +132,7 @@ const App = () => {
       console.log(error);
     }
   };
-  
+
   const connectWallet = async () => {
     try {
       setLoading(true);
@@ -148,7 +146,7 @@ const App = () => {
         method: "eth_requestAccounts",
       });
       setLoading(false);
-      
+
       console.log("Connected", accounts[0]);
       setCurrentAccount(accounts[0]);
       getAllWaves();

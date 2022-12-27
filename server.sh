@@ -27,11 +27,14 @@ killImage() {
 while [ "$1" != "" ]; do
   case $1 in
   -s | --start)
+    # sync the solidity contract abi into the webapp
+    rsync $(pwd)/src/solidity/artifacts/contracts/WavePortal.sol/WavePortal.json $(pwd)/src/web-app/src/utils
     rsync -r $(pwd)/src/web-app/ $(pwd)/docker/web-app/app
     cd $(pwd)/docker &&
     docker-compose up --remove-orphans -d
     ;;
   -sn | --sync)
+    rsync $(pwd)/src/solidity/artifacts/contracts/WavePortal.sol/WavePortal.json $(pwd)/src/web-app/src/utils
     rsync -r $(pwd)/src/web-app/ $(pwd)/docker/web-app/app
     ;;
   -n | --stop)

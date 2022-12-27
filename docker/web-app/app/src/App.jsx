@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Blocks } from 'react-loader-spinner';
-
 import { ethers } from "ethers";
 import "./App.css";
-import abi from "./utils/WavePortal.json";
-import WaveInput from "./src/components/WaveInput";
-
+import WaveInput from "/src/components/WaveInput";
+import abi from "/src/utils/WavePortal.json";
 
 const getEthereumObject = () => window.ethereum;
 
@@ -19,12 +17,13 @@ const App = () => {
   const [currentAccount, setCurrentAccount] = useState("");
   const [allWaves, setAllWaves] = useState([]);
   const [loading, setLoading] = useState(false);
-  
+
   /**
    * Create a variable here that holds the contract address after you deploy!
    */
-  const contractAddress = "0xA7026AF26275555789428DFb7de0FC5036C3945f";
+  const contractAddress = import.meta.env.VITE_CONTRACT_ADDRESS;
   
+  console.error(import.meta.env.VITE_CONTRACT_ADDRESS);
     /**
    * Create a variable here that references the abi content!
    */

@@ -14,8 +14,7 @@ function WaveInput(props) {
   }
   
   return (
-    <div>WaveInput.jsx
-      
+    <div>
       <label htmlFor="WaveInput">Enter your message:</label>
       <input type="text" id="WaveInput" value={waveMessage} onChange={handleChange} />
       <button className="waveButton" disabled={loading} onClick={handleButtonClick}>
