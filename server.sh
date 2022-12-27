@@ -30,6 +30,9 @@ while [ "$1" != "" ]; do
     cd $(pwd)/docker &&
     docker-compose up --remove-orphans -d
     ;;
+  -sn | --sync)
+    rsync -r $(pwd)/src/web-app/ $(pwd)/docker/web-app/app
+    ;;
   -n | --stop)
     rm -rf $(pwd)/docker/web-app/app/
     cd $(pwd)/docker &&
