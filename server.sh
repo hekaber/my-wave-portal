@@ -10,9 +10,10 @@ usage() {
     cat <<EOF
 Usage: server [params]
 Params:
--s | --start: start docker-compose
--n | --stop: stop docker
--k | --kill: reset image with image name param
+-s     | --start: start docker-compose
+-wasn  | --webapp-sync: sync webapp content
+-n     | --stop: stop docker
+-k     | --kill: reset image with image name param
 EOF
 }
 

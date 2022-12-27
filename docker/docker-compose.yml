@@ -8,17 +8,14 @@ services:
     command: tail -f /dev/null
     networks:
       - wave-network
-  node:
-    tty: true
-    stdin_open: true
+  webapp:
     build:
       context: ./web-app
-    container_name: "node"
+    container_name: "webapp"
     ports:
       - 8080:8080
     volumes:
-      - ../src/web-app:/usr/src/app
-    command: yarn start
+      - ../src/web-app/src:/usr/src/app/src
     networks:
       - wave-network
 

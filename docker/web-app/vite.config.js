@@ -9,6 +9,7 @@ export default defineConfig({
   server: {
     host: '0.0.0.0',
     port: 8080
+    // TODO: why the fuck does it not get the env var??
     // port: process.env.WEBAPP_PORT
   }
 })
