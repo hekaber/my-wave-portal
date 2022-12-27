@@ -35,6 +35,9 @@ while [ "$1" != "" ]; do
     cd $(pwd)/docker &&
     docker-compose down
     ;;
+  -rmd | --remove-dangling)
+    docker rmi $(docker images -f "dangling=true" -q)
+    ;;
   -k | --kill)
     shift
     killImage $1

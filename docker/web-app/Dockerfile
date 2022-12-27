@@ -2,8 +2,8 @@
 
 FROM node:18-alpine3.16
 WORKDIR /usr/src/app
-COPY package.json yarn.lock ./
+COPY package.json vite.config.js ./
 COPY app/ .
-RUN yarn install
+RUN npm install
 EXPOSE 8080
-CMD ["yarn", "start"]
+CMD ["npm", "start"]
