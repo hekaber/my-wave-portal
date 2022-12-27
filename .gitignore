@@ -1,8 +1,6 @@
 .DS_Store
 #common
 src/*/config/env/.env
-src/*/config/env/.env
-
 
 #webapp
 src/web-app/node_modules
