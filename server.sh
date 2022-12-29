@@ -64,6 +64,3 @@ while [ "$1" != "" ]; do
   esac
   shift
 done
-
-#osascript -e "tell application \"Terminal\" to do script \"cd $(pwd)/docker ; docker-compose exec node /bin/bash -c 'yarn dev; bash' \""
-
